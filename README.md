@@ -7,9 +7,9 @@ Para isso, você irá criar um fork do projeto e resolver os exercícios em sua 
 ### Flow básico
 1. Crie um *fork* do projeto (uma cópia independente do repositório para sua própria conta)
 2. Baixe o *seu* repositório para sua máquina local
-   - `git clone https://github.com/nome_de_usuário/trilha-dev-ex2-23.1.git`
+   - `git clone https://github.com/nome_de_usuário/trilha-dev-ex3-23.1.git`
    - ou
-   - `git clone git@github.com:nome_de_usuário/trilha-dev-ex2-23.1`
+   - `git clone git@github.com:nome_de_usuário/trilha-dev-ex3-23.1`
    - ou
    - Baixar zip e descompactar
 3. Vá para a pasta /trilha-dev-ex3-23.1
