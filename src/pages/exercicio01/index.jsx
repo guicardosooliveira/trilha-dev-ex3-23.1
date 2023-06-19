@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './01.css'
 
 function Exercicio01() {
   const [counter, setCounter] = useState(0)
@@ -7,23 +8,28 @@ function Exercicio01() {
     setCounter((contador) => contador + 1)
   }
 
-  // Adicione aqui sua função
-  // const handleDecr......
+  const handleDecrease = () => {
+    setCounter((contador) => contador - 1)
+  }
   
   return (
-    <>
+    <section className='pagina'>
       <div className="instrucoes">
-        <h1> 
+        <h1 className='titulo-principal'> 
           Exercício 01 
         </h1>
-        <p> 
+        <p className='descricao-instrucoes'>
           Crie uma função que decrementa o valor do contador em 1 e crie um botão que chame essa função.
         </p>
       </div>
-      <h2>{counter}</h2>
-      <button onClick={handleIncrement}>Incrementar</button>
-      {/* Adicione aqui seu botão */}
-    </>
+      <div className='box-contador'>
+        <h2 className='contador'>{counter}</h2>
+      </div>
+      <div className='box-botoes'>
+        <button onClick={handleIncrement} className='botao'>Incrementar</button>
+        <button onClick={handleDecrease} className='botao'>Decrementar</button>
+      </div>
+    </section>
   )
 }
 
