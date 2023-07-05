@@ -2,14 +2,10 @@ import PropTypes from 'prop-types'
 
 function Tarefa({ tarefa, onCheck, onRemove }) {
   return (
-    <li>
-    <input
-        type="checkbox"
-        checked={tarefa.checado}
-        onChange={onCheck}
-    />
-    {tarefa.descricao}
-    <button onClick={onRemove}>Remover</button>
+    <li key={tarefa.id}>
+      <input type="checkbox" checked={tarefa.checado} onChange={onCheck}/>
+        {tarefa.descricao}
+      <button onClick={onRemove}>Remover</button>
     </li>
   )
 }

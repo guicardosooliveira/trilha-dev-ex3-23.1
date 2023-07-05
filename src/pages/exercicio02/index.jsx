@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import './02.css'
 
 import Tarefa from "../../components/tarefa"
 
@@ -24,16 +25,31 @@ function Exercicio02() {
   const [inputValue, setInputValue] = useState('')
 
   const handleCheck = (id) => () => {
-    // Implemente aqui sua função
+    setTarefas(
+      tarefas.map((tarefa) =>
+        tarefa.id === id ? { ...tarefa, checado: !tarefa.checado } : tarefa
+      )
+    );
   }
 
   const handleRemove = (id) => () => {
-    // Implemente aqui sua função
+    console.log(id)
+    const newList = tarefas.filter((tarefa) => tarefa.id !== id)
+    setTarefas(newList)
   }
 
   const handleAdd = () => {
-    // Implemente aqui sua função
-    
+    if (inputValue) {
+      currentId.current = currentId.current + 1
+      setTarefas([...tarefas, {
+        descricao: inputValue,
+        checado: false,
+        id: currentId.current
+      }])
+      setInputValue('')
+    } else {
+      alert('Não é possível adicionar um item vazio à lista')
+    }
   }
 
   return (
@@ -64,7 +80,7 @@ function Exercicio02() {
         </ul>
       </div>      
       <ul>
-        {/* Adicione aqui o componente Tarefa */}
+        {tarefas.map(componente => <Tarefa tarefa={componente} onCheck={handleCheck(componente.id)} onRemove={handleRemove(componente.id)}/>)}
       </ul>
       <input
         type="text"
