@@ -1,9 +1,30 @@
 import { useEffect, useState } from 'react'
 
-import { getPokemons } from '../../services/pokemon'
+import { getPokemonTypes, getPokemons } from '../../services/pokemon'
+import Pokemon from '../../components/pokemon'
 
 function Exercicio03() {
   const [pokemons, setPokemons] = useState([])
+
+  useEffect(() => {
+    async function getpokemonsList() {
+    try{
+      const pokemonsList = await getPokemons()
+      setPokemons(pokemonsList)
+    } catch(e) {
+      console.log(e)
+    }}
+    getpokemonsList()
+  }, [])
+
+  async function getTypes(name){
+    try {
+      const pokemonAttributes = await getPokemonTypes(name)
+      return pokemonAttributes
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // Como implementar o useEffect para chamar a função getPokemons apenas uma vez no carregamento? (Em outras palavras, como usar o hook useEffect(funcional) como componentDidMount(classe)?
   // E como armazenar o resultado da função getPokemons no estado pokemons?
@@ -11,7 +32,7 @@ function Exercicio03() {
 
   return (
     <>
-      <div className="instrucoes">
+      {/* <div className="instrucoes">
         <h1> 
           Exercício 03 
         </h1>
@@ -35,19 +56,16 @@ function Exercicio03() {
             Extra: Adicione ao componente um botão que, ao ser clicado, exibe seus tipos. (verifique a documentação de https://pokeapi.co/)
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className="exercicio">
         <h1>
           Lista de pokemons
         </h1>
         <ul>
-          {/* Substitua pelo seu componente Pokemon */}
-          {pokemons.map((pokemon) => (
-            <li key={pokemon.name}>
-              {pokemon.name}
-            </li>
-          ))}
+          {pokemons.map((pokemon) => {
+            return <Pokemon nome={pokemon.name} showTypes={() => getTypes(pokemon.name)}/>
+          })}
         </ul>
       </div>
     </>
